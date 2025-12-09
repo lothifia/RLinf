@@ -1,0 +1,22 @@
+name: Self Hosted Test
+
+on:
+  push:
+    branches: [ main,  ci_test]
+  workflow_dispatch:  # 允许你在 Actions 页面手动点运行
+
+jobs:
+  build:
+    runs-on: [self-hosted, linux, X64]  # 按你的标签改
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show who am I
+        run: |
+          echo "Running on self-hosted runner"
+          whoami
+          pwd
+
+      - name: List files
+        run: ls -al
