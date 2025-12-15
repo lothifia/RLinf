@@ -1,0 +1,22 @@
+name: ci-selfhosted
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+
+jobs:
+  smoke_and_test:
+    runs-on: [self-hosted, idle_resource]
+    steps:
+      - name: Runner info
+        run: |
+          echo "runner=$RUNNER_NAME host=$(hostname)"
+          uname -a
+
+      - uses: actions/checkout@v4
+
+      - name: Run tests
+        run: |
+          # TODO: 换成你项目真实 CI 命令
+          echo "replace me"
